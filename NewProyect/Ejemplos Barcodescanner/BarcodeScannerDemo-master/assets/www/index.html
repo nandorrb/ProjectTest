@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    
+    <title>QR Code Scanner</title>
+    
+    <script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="barcodescanner.js"></script>
+
+    <script type="text/javascript">
+    function launchQRCodeReader()
+    {
+      window.plugins.barcodeScanner.scan( function(result) {
+              var content = document.getElementById('content');
+              content.innerHTML = 'Your encoded content is \'' + result.text + '\'';
+          }, function(error) {
+              onError(error);
+          }
+      );
+    }
+    </script>
+  </head>
+  <body onload="" id="stage" class="theme">
+    <p id="content"></p>
+    <input type="button" value="Scan QR Code" onclick="launchQRCodeReader();" />
+  </body>
+</html>
